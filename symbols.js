@@ -1,30 +1,79 @@
 const SYMBOLS = [
+
+  // =========================
+  // LETRAS ESPECIALES
+  // =========================
+
   { symbol: "ñ", name: "Eñe", keywords: ["enie", "ene con tilde", "n con tilde"] },
+
+
+  // =========================
+  // BARRAS, LLAVES Y CORCHETES
+  // =========================
 
   { symbol: "/", name: "Barra", keywords: ["slash", "barra", "barra diagonal"] },
   { symbol: "\\", name: "Barra invertida", keywords: ["backslash", "barra invertida", "contrabarra"] },
+  { symbol: "|", name: "Barra vertical", keywords: ["barra vertical", "pipe", "vertical bar"] },
+  { symbol: "{", name: "Llave de apertura", keywords: ["llave", "llave apertura", "llave izquierda", "curly bracket", "opening brace"] },
+  { symbol: "}", name: "Llave de cierre", keywords: ["llave", "llave cierre", "llave derecha", "curly bracket", "closing brace"] },
+  { symbol: "[", name: "Corchete de apertura", keywords: ["corchete", "corchete apertura", "corchete izquierdo", "square bracket", "opening bracket"] },
+  { symbol: "]", name: "Corchete de cierre", keywords: ["corchete", "corchete cierre", "corchete derecho", "square bracket", "closing bracket"] },
+  { symbol: "_", name: "Guion bajo", keywords: ["guion bajo", "underscore", "barra baja"] },
+
+
+  // =========================
+  // SÍMBOLOS GENERALES
+  // =========================
+
+  { symbol: "~", name: "Virgulilla", keywords: ["virgulilla", "tilde", "tilde symbol", "aproximacion", "aproximación"] },
   { symbol: "©", name: "Copyright", keywords: ["copyright", "copy right", "derechos de autor"] },
-  
+  { symbol: "°", name: "Grados", keywords: ["grado", "grados", "temperatura"] },
+  { symbol: "™", name: "Marca comercial", keywords: ["trademark", "trade mark", "marca comercial"] },
+  { symbol: "®", name: "Marca registrada", keywords: ["registrado", "registered", "marca registrada"] },
+  { symbol: "^", name: "Circunflejo", keywords: ["circunflejo", "caret", "sombrerito", "caret symbol", "sombrero"] },
+
+
+  // =========================
+  // FLECHAS
+  // =========================
+
+  { symbol: "→", name: "Flecha derecha", keywords: ["flecha derecha", "derecha", "arrow right"] },
+  { symbol: "←", name: "Flecha izquierda", keywords: ["flecha izquierda", "izquierda", "arrow left"] },
+
+
+  // =========================
+  // MONEDAS
+  // =========================
+
   { symbol: "€", name: "Euro", keywords: ["euro", "euros", "moneda europea"] },
   { symbol: "$", name: "Dólar", keywords: ["usd", "dollar", "dollars", "dolar", "dólar", "dolares", "dólares"] },
   { symbol: "£", name: "Libra", keywords: ["libra", "libras", "pound", "moneda inglesa"] },
   { symbol: "¥", name: "Yen", keywords: ["yen", "yuan", "moneda japonesa"] },
   { symbol: "¢", name: "Centavo", keywords: ["centavo", "cent", "cents"] },
 
-  { symbol: "°", name: "Grados", keywords: ["grado", "grados", "temperatura"] },
+
+  // =========================
+  // MATEMÁTICA
+  // =========================
+
+  { symbol: "<", name: "Menor que", keywords: ["menor", "menor que", "less than", "less than sign"] },
+  { symbol: ">", name: "Mayor que", keywords: ["mayor", "mayor que", "greater than", "greater than sign"] },
+  { symbol: "≤", name: "Menor o igual", keywords: ["menor o igual", "menor igual", "less than"] },
+  { symbol: "≥", name: "Mayor o igual", keywords: ["mayor o igual", "mayor igual", "greater than"] },
   { symbol: "≠", name: "Distinto de", keywords: ["igual tachado", "distinto", "no igual", "diferente"] },
-  { symbol: "→", name: "Flecha derecha", keywords: ["flecha derecha", "derecha", "arrow right"] },
   { symbol: "∞", name: "Infinito", keywords: ["infinito", "infinity"] },
   { symbol: "≈", name: "Aproximadamente", keywords: ["aproximadamente", "aproximado", "casi igual"] },
   { symbol: "±", name: "Más o menos", keywords: ["mas o menos", "más o menos", "plus minus"] },
   { symbol: "÷", name: "División", keywords: ["division", "división", "dividido", "obelus"] },
-  { symbol: "≤", name: "Menor o igual", keywords: ["menor o igual", "menor igual", "less than"] },
-  { symbol: "≥", name: "Mayor o igual", keywords: ["mayor o igual", "mayor igual", "greater than"] },
   { symbol: "√", name: "Raíz cuadrada", keywords: ["raiz", "raíz", "raiz cuadrada", "square root"] },
   { symbol: "π", name: "Pi", keywords: ["pi", "numero pi", "número pi"] },
   { symbol: "µ", name: "Micro", keywords: ["micro", "micra", "mu"] },
-  { symbol: "™", name: "Marca comercial", keywords: ["trademark", "trade mark", "marca comercial"] },
-  { symbol: "®", name: "Marca registrada", keywords: ["registrado", "registered", "marca registrada"] },
+
+
+  // =========================
+  // PUNTUACIÓN Y ESCRITURA
+  // =========================
+
   { symbol: "¿", name: "Interrogación de apertura", keywords: ["interrogacion", "interrogación", "pregunta apertura", "signo de interrogación de apertura", "signo de interrogacion de apertura"] },
   { symbol: "¡", name: "Exclamación de apertura", keywords: ["exclamacion", "exclamación", "admiracion", "admiración", "signo de exclamación de apertura", "signo de exclamacion de apertura"] },
   { symbol: "«", name: "Comillas angulares de apertura", keywords: ["comillas", "comillas francesas", "comillas apertura"] },
@@ -32,7 +81,12 @@ const SYMBOLS = [
   { symbol: "#", name: "Hashtag", keywords: ["hashtag", "hash", "numeral", "number sign", "gato"] },
   { symbol: "@", name: "Arroba", keywords: ["arroba", "at", "at sign", "email", "correo"] },
   { symbol: "•", name: "Viñeta", keywords: ["viñeta", "vineta", "bullet", "punto de lista", "punto negro"] },
-  
+
+
+  // =========================
+  // ACENTO AGUDO
+  // =========================
+
   { symbol: "á", name: "A con acento agudo", keywords: ["a con tilde", "a con acento", "a aguda", "a acute", "acute a"] },
   { symbol: "é", name: "E con acento agudo", keywords: ["e con tilde", "e con acento", "e aguda", "e acute", "acute e"] },
   { symbol: "í", name: "I con acento agudo", keywords: ["i con tilde", "i con acento", "i aguda", "i acute", "acute i"] },
@@ -44,6 +98,11 @@ const SYMBOLS = [
   { symbol: "Í", name: "I mayúscula con acento agudo", keywords: ["i mayuscula con tilde", "i mayúscula con tilde", "i mayuscula aguda", "uppercase i acute", "capital i acute"] },
   { symbol: "Ó", name: "O mayúscula con acento agudo", keywords: ["o mayuscula con tilde", "o mayúscula con tilde", "o mayuscula aguda", "uppercase o acute", "capital o acute"] },
   { symbol: "Ú", name: "U mayúscula con acento agudo", keywords: ["u mayuscula con tilde", "u mayúscula con tilde", "u mayuscula aguda", "uppercase u acute", "capital u acute"] },
+
+
+  // =========================
+  // ACENTO GRAVE
+  // =========================
 
   { symbol: "à", name: "A con acento grave", keywords: ["a grave", "a con acento grave", "grave a"] },
   { symbol: "è", name: "E con acento grave", keywords: ["e grave", "e con acento grave", "grave e"] },
@@ -57,6 +116,11 @@ const SYMBOLS = [
   { symbol: "Ò", name: "O mayúscula con acento grave", keywords: ["o mayuscula grave", "o mayúscula grave", "uppercase o grave", "capital o grave"] },
   { symbol: "Ù", name: "U mayúscula con acento grave", keywords: ["u mayuscula grave", "u mayúscula grave", "uppercase u grave", "capital u grave"] },
 
+
+  // =========================
+  // CIRCUNFLEJO
+  // =========================
+
   { symbol: "â", name: "A con circunflejo", keywords: ["a circunflejo", "a con sombrerito", "a circumflex", "circumflex a"] },
   { symbol: "ê", name: "E con circunflejo", keywords: ["e circunflejo", "e con sombrerito", "e circumflex", "circumflex e"] },
   { symbol: "î", name: "I con circunflejo", keywords: ["i circunflejo", "i con sombrerito", "i circumflex", "circumflex i"] },
@@ -68,6 +132,11 @@ const SYMBOLS = [
   { symbol: "Î", name: "I mayúscula con circunflejo", keywords: ["i mayuscula circunflejo", "i mayúscula circunflejo", "uppercase i circumflex", "capital i circumflex"] },
   { symbol: "Ô", name: "O mayúscula con circunflejo", keywords: ["o mayuscula circunflejo", "o mayúscula circunflejo", "uppercase o circumflex", "capital o circumflex"] },
   { symbol: "Û", name: "U mayúscula con circunflejo", keywords: ["u mayuscula circunflejo", "u mayúscula circunflejo", "uppercase u circumflex", "capital u circumflex"] },
+
+
+  // =========================
+  // DIÉRESIS
+  // =========================
 
   { symbol: "ä", name: "A con diéresis", keywords: ["a dieresis", "a diéresis", "a umlaut", "umlaut a"] },
   { symbol: "ë", name: "E con diéresis", keywords: ["e dieresis", "e diéresis", "e umlaut", "umlaut e"] },
@@ -81,6 +150,11 @@ const SYMBOLS = [
   { symbol: "Ö", name: "O mayúscula con diéresis", keywords: ["o mayuscula dieresis", "o mayúscula diéresis", "uppercase o umlaut", "capital o umlaut"] },
   { symbol: "Ü", name: "U mayúscula con diéresis", keywords: ["u mayuscula dieresis", "u mayúscula diéresis", "uppercase u umlaut", "capital u umlaut"] },
 
+
+  // =========================
+  // VIRGULILLA
+  // =========================
+
   { symbol: "ã", name: "A con virgulilla", keywords: ["a virgulilla", "a tilde portuguesa", "a portuguese", "a nasal"] },
   { symbol: "ẽ", name: "E con virgulilla", keywords: ["e virgulilla", "e tilde portuguesa", "e portuguese", "e nasal"] },
   { symbol: "ĩ", name: "I con virgulilla", keywords: ["i virgulilla", "i tilde portuguesa", "i portuguese", "i nasal"] },
@@ -93,8 +167,18 @@ const SYMBOLS = [
   { symbol: "Õ", name: "O mayúscula con virgulilla", keywords: ["o mayuscula virgulilla", "o mayúscula virgulilla", "uppercase o tilde", "capital o tilde"] },
   { symbol: "Ũ", name: "U mayúscula con virgulilla", keywords: ["u mayuscula virgulilla", "u mayúscula virgulilla", "uppercase u tilde", "capital u tilde"] },
 
+
+  // =========================
+  // A CON ANILLO
+  // =========================
+
   { symbol: "å", name: "A con anillo", keywords: ["a anillo", "a con circulo", "a con círculo", "a ring", "angstrom"] },
   { symbol: "Å", name: "A mayúscula con anillo", keywords: ["a mayuscula anillo", "a mayúscula anillo", "uppercase a ring", "capital a ring", "angstrom"] },
+
+
+  // =========================
+  // LIGADURAS
+  // =========================
 
   { symbol: "æ", name: "AE ligada", keywords: ["ae", "a e pegadas", "a y e pegadas", "ae ligature", "ash"] },
   { symbol: "Æ", name: "AE ligada mayúscula", keywords: ["ae mayuscula", "ae mayúscula", "a e pegadas mayuscula", "uppercase ae ligature", "capital ae"] },
@@ -102,8 +186,18 @@ const SYMBOLS = [
   { symbol: "œ", name: "OE ligada", keywords: ["oe", "o e pegadas", "o y e pegadas", "oe ligature"] },
   { symbol: "Œ", name: "OE ligada mayúscula", keywords: ["oe mayuscula", "oe mayúscula", "o e pegadas mayuscula", "uppercase oe ligature", "capital oe"] },
 
+
+  // =========================
+  // LETRAS BARRADAS
+  // =========================
+
   { symbol: "ø", name: "O barrada", keywords: ["o barrada", "o tachada", "o con raya", "o slash", "o stroke"] },
   { symbol: "Ø", name: "O barrada mayúscula", keywords: ["o mayuscula barrada", "o mayúscula barrada", "uppercase o stroke", "capital o stroke"] },
+
+
+  // =========================
+  // CEDILLA
+  // =========================
 
   { symbol: "ç", name: "C con cedilla", keywords: ["c cedilla", "c con cedilla", "cedilla", "frances c", "francés c"] },
   { symbol: "Ç", name: "C mayúscula con cedilla", keywords: ["c mayuscula cedilla", "c mayúscula cedilla", "uppercase c cedilla", "capital c cedilla"] }
