@@ -3,13 +3,14 @@ const searchInput = document.querySelector("#search-input");
 const resultsElement = document.querySelector("#results");
 const emptyState = document.querySelector("#empty-state");
 const statusElement = document.querySelector("#status");
-const USAGE_STORAGE_KEY = "symbolUsageStats";
-const DEFAULT_SUGGESTION_SYMBOLS = ["ñ", "@", "á", "ó", "é", "©"];
+const RECENT_STORAGE_KEY = "recentSymbols";
+const LEGACY_USAGE_STORAGE_KEY = "symbolUsageStats";
+const DEFAULT_RECENT_SYMBOLS = ["ñ", "@", "á", "é", "ó"];
 const symbolsByValue = new Map(SYMBOLS.map((item) => [item.symbol, item]));
 
 let visibleResults = [];
 let statusTimeout;
-let usageStats = {};
+let recentSymbols = [...DEFAULT_RECENT_SYMBOLS];
 
 function normalizeText(text) {
   return text
@@ -42,33 +43,38 @@ function scoreSymbol(item, query) {
   return bestScore;
 }
 
-function getPersonalizedSuggestions() {
-  const rankedSymbols = Object.entries(usageStats)
-    .filter(([symbol, stats]) => {
-      return symbolsByValue.has(symbol) && stats.count > 0;
-    })
-    .sort(([, statsA], [, statsB]) => {
-      return statsB.count - statsA.count || statsB.lastUsed - statsA.lastUsed;
-    })
-    .map(([symbol]) => symbol);
+function buildRecentSymbols(symbols) {
+  const result = [];
 
-  const suggestionSymbols = [];
-
-  for (const symbol of [...rankedSymbols, ...DEFAULT_SUGGESTION_SYMBOLS]) {
-    if (!suggestionSymbols.includes(symbol) && symbolsByValue.has(symbol)) {
-      suggestionSymbols.push(symbol);
+  for (const symbol of [...symbols, ...DEFAULT_RECENT_SYMBOLS]) {
+    if (symbolsByValue.has(symbol) && !result.includes(symbol)) {
+      result.push(symbol);
     }
 
-    if (suggestionSymbols.length === 6) break;
+    if (result.length === 5) break;
   }
 
-  return suggestionSymbols.map((symbol) => symbolsByValue.get(symbol));
+  return result;
+}
+
+function getAllSymbolsWithRecentFirst() {
+  const results = recentSymbols.map((symbol) => symbolsByValue.get(symbol));
+  const includedSymbols = new Set(recentSymbols);
+
+  for (const item of SYMBOLS) {
+    if (!includedSymbols.has(item.symbol)) {
+      results.push(item);
+      includedSymbols.add(item.symbol);
+    }
+  }
+
+  return results;
 }
 
 function searchSymbols(rawQuery) {
   const query = normalizeText(rawQuery);
 
-  if (!query) return getPersonalizedSuggestions();
+  if (!query) return getAllSymbolsWithRecentFirst();
 
   return SYMBOLS
     .map((item, index) => ({ item, index, score: scoreSymbol(item, query) }))
@@ -119,38 +125,48 @@ function showStatus(message) {
   }, 1000);
 }
 
-async function loadUsageStats() {
+async function loadRecentSymbols() {
   try {
-    const storedData = await chrome.storage.local.get(USAGE_STORAGE_KEY);
-    usageStats = storedData[USAGE_STORAGE_KEY] ?? {};
+    const storedData = await chrome.storage.local.get([
+      RECENT_STORAGE_KEY,
+      LEGACY_USAGE_STORAGE_KEY
+    ]);
+    const storedRecentSymbols = storedData[RECENT_STORAGE_KEY];
+    const legacyUsageStats = storedData[LEGACY_USAGE_STORAGE_KEY] ?? {};
+    const legacyRecentSymbols = Object.entries(legacyUsageStats)
+      .filter(([symbol, stats]) => {
+        return symbolsByValue.has(symbol) && stats && Number.isFinite(stats.lastUsed);
+      })
+      .sort(([, statsA], [, statsB]) => statsB.lastUsed - statsA.lastUsed)
+      .map(([symbol]) => symbol);
+
+    recentSymbols = buildRecentSymbols(
+      Array.isArray(storedRecentSymbols) ? storedRecentSymbols : legacyRecentSymbols
+    );
+
+    await chrome.storage.local.set({ [RECENT_STORAGE_KEY]: recentSymbols });
+
+    if (storedData[LEGACY_USAGE_STORAGE_KEY]) {
+      await chrome.storage.local.remove(LEGACY_USAGE_STORAGE_KEY);
+    }
   } catch (error) {
     console.error("No se pudo cargar el historial:", error);
-    usageStats = {};
+    recentSymbols = [...DEFAULT_RECENT_SYMBOLS];
   }
 }
 
-async function recordSymbolUsage(symbol) {
-  const previousStats = usageStats[symbol] ?? { count: 0, lastUsed: 0 };
+async function recordRecentSymbol(symbol) {
+  recentSymbols = buildRecentSymbols([
+    symbol,
+    ...recentSymbols.filter((recentSymbol) => recentSymbol !== symbol)
+  ]);
 
-  usageStats = {
-    ...usageStats,
-    [symbol]: {
-      count: previousStats.count + 1,
-      lastUsed: Date.now()
-    }
-  };
-
-  await chrome.storage.local.set({ [USAGE_STORAGE_KEY]: usageStats });
-
-  if (!normalizeText(searchInput.value)) {
-    renderResults();
-  }
+  await chrome.storage.local.set({ [RECENT_STORAGE_KEY]: recentSymbols });
 }
 
 async function copySymbol(symbol) {
   try {
     await navigator.clipboard.writeText(symbol);
-    showStatus(`Copied ${symbol}`);
   } catch (error) {
     console.error("No se pudo copiar el símbolo:", error);
     showStatus("No se pudo copiar");
@@ -158,10 +174,14 @@ async function copySymbol(symbol) {
   }
 
   try {
-    await recordSymbolUsage(symbol);
+    await recordRecentSymbol(symbol);
   } catch (error) {
     console.error("No se pudo guardar el historial:", error);
   }
+
+  searchInput.value = "";
+  renderResults();
+  showStatus(`Copied ${symbol}`);
 }
 
 searchInput.addEventListener("input", renderResults);
@@ -175,7 +195,7 @@ searchForm.addEventListener("submit", (event) => {
 });
 
 async function initialize() {
-  await loadUsageStats();
+  await loadRecentSymbols();
   renderResults();
   searchInput.focus();
 }
