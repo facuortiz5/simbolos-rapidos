@@ -1,8 +1,15 @@
 const searchForm = document.querySelector("#search-form");
 const searchInput = document.querySelector("#search-input");
 const resultsElement = document.querySelector("#results");
-const emptyState = document.querySelector("#empty-state");
+const suggestionState = document.querySelector("#suggestion-state");
+const suggestionTitle = document.querySelector(".suggestion__title");
+const suggestionForm = document.querySelector("#suggestion-form");
+const suggestionInput = document.querySelector("#suggestion-input");
+const suggestionSubmit = document.querySelector("#suggestion-submit");
+const suggestionSuccess = document.querySelector("#suggestion-success");
+const suggestionError = document.querySelector("#suggestion-error");
 const statusElement = document.querySelector("#status");
+const SUGGESTION_ENDPOINT = "https://script.google.com/macros/s/AKfycbyqfOAccdiCQw0m8Ng3HmXH7akVKTCFPhe-iaUfH4zQwc2Phw5cc-mmWYjsy8xEr0iyDg/exec";
 const RECENT_STORAGE_KEY = "recentSymbols";
 const LEGACY_USAGE_STORAGE_KEY = "symbolUsageStats";
 const DEFAULT_RECENT_SYMBOLS = ["ñ", "@", "á", "é", "ó"];
@@ -11,6 +18,8 @@ const symbolsByValue = new Map(SYMBOLS.map((item) => [item.symbol, item]));
 let visibleResults = [];
 let statusTimeout;
 let recentSymbols = [...DEFAULT_RECENT_SYMBOLS];
+let isSendingSuggestion = false;
+let suggestionStateVersion = 0;
 
 function normalizeText(text) {
   return text
@@ -111,8 +120,11 @@ function createResultButton(item) {
 
 function renderResults() {
   visibleResults = searchSymbols(searchInput.value);
+  const showSuggestion = Boolean(normalizeText(searchInput.value)) && visibleResults.length === 0;
+
   resultsElement.replaceChildren(...visibleResults.map(createResultButton));
-  emptyState.hidden = visibleResults.length > 0;
+  resultsElement.hidden = showSuggestion;
+  suggestionState.hidden = !showSuggestion;
 }
 
 function showStatus(message) {
@@ -123,6 +135,67 @@ function showStatus(message) {
   statusTimeout = setTimeout(() => {
     statusElement.classList.remove("status--visible");
   }, 1000);
+}
+
+function setSuggestionSending(isSending) {
+  suggestionInput.disabled = isSending;
+  suggestionSubmit.disabled = isSending;
+  suggestionSubmit.textContent = isSending ? "Enviando..." : "Enviar sugerencia";
+}
+
+function resetSuggestionState() {
+  suggestionStateVersion += 1;
+  isSendingSuggestion = false;
+  suggestionInput.value = "";
+  suggestionTitle.hidden = false;
+  suggestionForm.hidden = false;
+  suggestionSuccess.hidden = true;
+  suggestionError.hidden = true;
+  setSuggestionSending(false);
+}
+
+async function submitSuggestion(event) {
+  event.preventDefault();
+
+  const description = suggestionInput.value.trim();
+
+  if (!description || isSendingSuggestion) {
+    if (!description) suggestionInput.focus();
+    return;
+  }
+
+  const currentStateVersion = suggestionStateVersion;
+  isSendingSuggestion = true;
+  suggestionError.hidden = true;
+  setSuggestionSending(true);
+
+  try {
+    const response = await fetch(SUGGESTION_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ descripcion: description })
+    });
+
+    if (!response.ok) {
+      throw new Error(`El servidor respondió con estado ${response.status}`);
+    }
+
+    if (currentStateVersion !== suggestionStateVersion) return;
+
+    suggestionTitle.hidden = true;
+    suggestionForm.hidden = true;
+    suggestionSuccess.hidden = false;
+  } catch (error) {
+    if (currentStateVersion !== suggestionStateVersion) return;
+
+    console.error("No se pudo enviar la sugerencia:", error);
+    suggestionError.hidden = false;
+  } finally {
+    if (currentStateVersion === suggestionStateVersion) {
+      isSendingSuggestion = false;
+      setSuggestionSending(false);
+    }
+  }
 }
 
 async function loadRecentSymbols() {
@@ -184,7 +257,16 @@ async function copySymbol(symbol) {
   showStatus(`Copied ${symbol}`);
 }
 
-searchInput.addEventListener("input", renderResults);
+searchInput.addEventListener("input", () => {
+  resetSuggestionState();
+  renderResults();
+});
+
+suggestionInput.addEventListener("input", () => {
+  suggestionError.hidden = true;
+});
+
+suggestionForm.addEventListener("submit", submitSuggestion);
 
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault();

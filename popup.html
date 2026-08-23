@@ -20,7 +20,7 @@
         <input
           id="search-input"
           type="search"
-          placeholder="Probá “eñe”, “slash” o “euro”"
+          placeholder="Probá “enie”, “slash” o “euro”"
           aria-label="Buscar un símbolo"
           autocomplete="off"
           autofocus
@@ -29,7 +29,27 @@
 
       <p class="hint">Hacé clic para copiar | Enter copia el primero</p>
       <section id="results" class="results" aria-label="Resultados"></section>
-      <p id="empty-state" class="empty" hidden>No encontré ese símbolo.</p>
+      <section id="suggestion-state" class="suggestion" hidden>
+        <h2 class="suggestion__title">¿No encontrás el símbolo que buscás?</h2>
+        <form id="suggestion-form" class="suggestion__form">
+          <textarea
+            id="suggestion-input"
+            rows="2"
+            placeholder="Describí la letra o símbolo y lo agrego en una próxima actualización."
+            aria-label="Describir la letra o símbolo faltante"
+            required
+          ></textarea>
+          <button id="suggestion-submit" class="suggestion__submit" type="submit">
+            Enviar sugerencia
+          </button>
+        </form>
+        <p id="suggestion-success" class="suggestion__message suggestion__message--success" role="status" hidden>
+          ¡Gracias! Recibí tu sugerencia.
+        </p>
+        <p id="suggestion-error" class="suggestion__message suggestion__message--error" role="alert" hidden>
+          No pudimos enviar la sugerencia. Probá de nuevo.
+        </p>
+      </section>
       <p id="status" class="status" role="status" aria-live="polite"></p>
     </main>
 
