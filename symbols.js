@@ -66,9 +66,6 @@ const SYMBOLS = [
   { symbol: "±", name: "Más o menos", keywords: ["mas o menos", "más o menos", "plus minus"] },
   { symbol: "÷", name: "División", keywords: ["division", "división", "dividido", "obelus"] },
   { symbol: "√", name: "Raíz cuadrada", keywords: ["raiz", "raíz", "raiz cuadrada", "square root"] },
-  { symbol: "π", name: "Pi", keywords: ["pi", "numero pi", "número pi"] },
-  { symbol: "µ", name: "Micro", keywords: ["micro", "micra", "mu"] },
-
 
   // =========================
   // PUNTUACIÓN Y ESCRITURA
@@ -200,5 +197,67 @@ const SYMBOLS = [
   // =========================
 
   { symbol: "ç", name: "C con cedilla", keywords: ["c cedilla", "c con cedilla", "cedilla", "frances c", "francés c"] },
-  { symbol: "Ç", name: "C mayúscula con cedilla", keywords: ["c mayuscula cedilla", "c mayúscula cedilla", "uppercase c cedilla", "capital c cedilla"] }
+  { symbol: "Ç", name: "C mayúscula con cedilla", keywords: ["c mayuscula cedilla", "c mayúscula cedilla", "uppercase c cedilla", "capital c cedilla"] },
+
+  // =========================
+  // ALFABETO GRIEGO
+  // =========================
+
+  { symbol: "α", name: "Alfa", keywords: ["alfa", "alpha", "alfa minuscula", "alfa minúscula", "alpha lowercase", "greek alpha", "letra griega alfa", "greek letter alpha", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "β", name: "Beta", keywords: ["beta", "beta minuscula", "beta minúscula", "beta lowercase", "greek beta", "letra griega beta", "greek letter beta", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "γ", name: "Gamma", keywords: ["gamma", "gama", "gamma minuscula", "gamma minúscula", "gamma lowercase", "greek gamma", "letra griega gamma", "greek letter gamma", "alfabeto griego", "greek alphabet"] },
+  { symbol: "Γ", name: "Gamma mayúscula", keywords: ["gamma mayuscula", "gamma mayúscula", "gama mayuscula", "gamma uppercase", "capital gamma", "greek gamma uppercase", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "δ", name: "Delta", keywords: ["delta", "delta minuscula", "delta minúscula", "delta lowercase", "greek delta", "letra griega delta", "greek letter delta", "alfabeto griego", "greek alphabet"] },
+  { symbol: "Δ", name: "Delta mayúscula", keywords: ["delta mayuscula", "delta mayúscula", "delta uppercase", "capital delta", "greek delta uppercase", "letra griega delta mayuscula", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "ε", name: "Épsilon", keywords: ["epsilon", "épsilon", "epsilon minuscula", "epsilon minúscula", "epsilon lowercase", "greek epsilon", "letra griega epsilon", "greek letter epsilon", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "ζ", name: "Zeta", keywords: ["zeta", "zeta minuscula", "zeta minúscula", "zeta lowercase", "greek zeta", "letra griega zeta", "greek letter zeta", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "η", name: "Eta", keywords: ["eta", "eta minuscula", "eta minúscula", "eta lowercase", "greek eta", "letra griega eta", "greek letter eta", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "θ", name: "Theta", keywords: ["theta", "teta", "theta minuscula", "theta minúscula", "theta lowercase", "greek theta", "letra griega theta", "greek letter theta", "alfabeto griego", "greek alphabet"] },
+  { symbol: "Θ", name: "Theta mayúscula", keywords: ["theta mayuscula", "theta mayúscula", "teta mayuscula", "theta uppercase", "capital theta", "greek theta uppercase", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "ι", name: "Iota", keywords: ["iota", "iota minuscula", "iota minúscula", "iota lowercase", "greek iota", "letra griega iota", "greek letter iota", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "κ", name: "Kappa", keywords: ["kappa", "kapa", "kappa minuscula", "kappa minúscula", "kappa lowercase", "greek kappa", "letra griega kappa", "greek letter kappa", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "λ", name: "Lambda", keywords: ["lambda", "lamda", "lambda minuscula", "lambda minúscula", "lambda lowercase", "greek lambda", "letra griega lambda", "greek letter lambda", "alfabeto griego", "greek alphabet"] },
+  { symbol: "Λ", name: "Lambda mayúscula", keywords: ["lambda mayuscula", "lambda mayúscula", "lamda mayuscula", "lambda uppercase", "capital lambda", "greek lambda uppercase", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "μ", name: "Mu", keywords: ["micro", "my", "mu", "mu griega", "greek mu", "mu minuscula", "mu minúscula", "mu lowercase", "letra griega mu", "greek letter mu", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "ν", name: "Nu", keywords: ["nu", "nu minuscula", "nu minúscula", "nu lowercase", "greek nu", "letra griega nu", "greek letter nu", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "ξ", name: "Xi", keywords: ["xi", "xi minuscula", "xi minúscula", "xi lowercase", "greek xi", "letra griega xi", "greek letter xi", "alfabeto griego", "greek alphabet"] },
+  { symbol: "Ξ", name: "Xi mayúscula", keywords: ["xi mayuscula", "xi mayúscula", "xi uppercase", "capital xi", "greek xi uppercase", "letra griega xi mayuscula", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "π", name: "Pi", keywords: ["pi", "numero pi", "número pi", "pi minuscula", "pi minúscula", "letra griega pi", "greek letter pi"] },
+  { symbol: "Π", name: "Pi mayúscula", keywords: ["pi mayuscula", "pi mayúscula", "pi uppercase", "capital pi", "greek pi uppercase", "letra griega pi mayuscula", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "ρ", name: "Rho", keywords: ["rho", "ro", "rho minuscula", "rho minúscula", "rho lowercase", "greek rho", "letra griega rho", "greek letter rho", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "σ", name: "Sigma", keywords: ["sigma", "sigma minuscula", "sigma minúscula", "sigma lowercase", "greek sigma", "letra griega sigma", "greek letter sigma", "alfabeto griego", "greek alphabet"] },
+  { symbol: "ς", name: "Sigma final", keywords: ["sigma final", "final sigma", "sigma final griega", "greek final sigma", "sigma minuscula final", "sigma minúscula final", "letra griega sigma final", "alfabeto griego", "greek alphabet"] },
+  { symbol: "Σ", name: "Sigma mayúscula", keywords: ["sigma mayuscula", "sigma mayúscula", "sigma uppercase", "capital sigma", "greek sigma uppercase", "sumatoria", "summation", "letra griega sigma mayuscula", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "τ", name: "Tau", keywords: ["tau", "tau minuscula", "tau minúscula", "tau lowercase", "greek tau", "letra griega tau", "greek letter tau", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "υ", name: "Ípsilon", keywords: ["ipsilon", "ípsilon", "upsilon", "ypsilon", "upsilon lowercase", "greek upsilon", "letra griega ipsilon", "greek letter upsilon", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "φ", name: "Fi", keywords: ["fi", "phi", "fi griega", "phi lowercase", "greek phi", "letra griega fi", "greek letter phi", "alfabeto griego", "greek alphabet"] },
+  { symbol: "Φ", name: "Fi mayúscula", keywords: ["fi mayuscula", "fi mayúscula", "phi uppercase", "capital phi", "greek phi uppercase", "letra griega fi mayuscula", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "χ", name: "Ji", keywords: ["ji", "chi", "ji griega", "chi lowercase", "greek chi", "letra griega ji", "greek letter chi", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "ψ", name: "Psi", keywords: ["psi", "psi minuscula", "psi minúscula", "psi lowercase", "greek psi", "letra griega psi", "greek letter psi", "alfabeto griego", "greek alphabet"] },
+  { symbol: "Ψ", name: "Psi mayúscula", keywords: ["psi mayuscula", "psi mayúscula", "psi uppercase", "capital psi", "greek psi uppercase", "letra griega psi mayuscula", "alfabeto griego", "greek alphabet"] },
+
+  { symbol: "ω", name: "Omega", keywords: ["omega", "omega minuscula", "omega minúscula", "omega lowercase", "greek omega", "letra griega omega", "greek letter omega", "alfabeto griego", "greek alphabet"] },
+  { symbol: "Ω", name: "Omega mayúscula", keywords: ["omega mayuscula", "omega mayúscula", "omega uppercase", "capital omega", "greek omega uppercase", "ohm", "ohmios", "letra griega omega mayuscula", "alfabeto griego", "greek alphabet"] },
+
 ];

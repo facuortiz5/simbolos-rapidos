@@ -85,6 +85,18 @@ function searchSymbols(rawQuery) {
 
   if (!query) return getAllSymbolsWithRecentFirst();
 
+  const greekCategoryQueries = [
+    "greek",
+    "griego",
+    "griega",
+    "alfabeto griego",
+    "greek alphabet"
+  ];
+
+  if (greekCategoryQueries.includes(query)) {
+    return SYMBOLS.filter((item) => scoreSymbol(item, "greek") > 0);
+  }
+
   return SYMBOLS
     .map((item, index) => ({ item, index, score: scoreSymbol(item, query) }))
     .filter((result) => result.score > 0)
