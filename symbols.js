@@ -5,6 +5,7 @@ const SYMBOLS = [
   // =========================
 
   { symbol: "ñ", name: "Eñe", keywords: ["enie", "ene con tilde", "n con tilde"] },
+  { symbol: "Ñ", name: "Eñe mayúscula", keywords: ["enie mayuscula", "ene con tilde mayuscula", "n con tilde mayuscula"] },
 
 
   // =========================

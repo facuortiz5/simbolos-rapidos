@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Símbolos rápidos",
-  "version": "1.0.4",
-  "description": "Busca y copia caracteres especiales desde un popup compacto.",
+  "name": "Símbolos rápidos: buscar y copiar caracteres",
+  "version": "1.0.5",
+  "description": "Buscá y copiá símbolos, caracteres especiales, letras con acentos, ñ, letras griegas y símbolos matemáticos rápidamente.",
   "permissions": ["clipboardWrite", "storage"],
   "host_permissions": [
     "https://script.google.com/*",
