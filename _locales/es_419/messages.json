@@ -1,0 +1,65 @@
+{
+  "extensionName": {
+    "message": "Símbolos rápidos: buscar y copiar caracteres"
+  },
+  "extensionDescription": {
+    "message": "Buscá y copiá símbolos, caracteres especiales, letras con acentos, letras griegas y símbolos matemáticos rápidamente."
+  },
+  "actionTitle": {
+    "message": "Buscar símbolos"
+  },
+  "documentTitle": {
+    "message": "Símbolos rápidos"
+  },
+  "eyebrow": {
+    "message": "SÍMBOLOS RÁPIDOS"
+  },
+  "heading": {
+    "message": "Encontrá el carácter que buscás"
+  },
+  "searchPlaceholder": {
+    "message": "Probá “enie”, “slash” o “euro”"
+  },
+  "searchAria": {
+    "message": "Buscar un símbolo"
+  },
+  "hint": {
+    "message": "Hacé clic para copiar | Enter copia el primero"
+  },
+  "resultsAria": {
+    "message": "Resultados"
+  },
+  "copy": {
+    "message": "Copiar"
+  },
+  "copied": {
+    "message": "Copiado"
+  },
+  "suggestionTitle": {
+    "message": "¿No encontrás el símbolo que buscás?"
+  },
+  "suggestionPlaceholder": {
+    "message": "Describí la letra o símbolo y lo agrego en una próxima actualización."
+  },
+  "suggestionAria": {
+    "message": "Describir la letra o símbolo faltante"
+  },
+  "sendSuggestion": {
+    "message": "Enviar sugerencia"
+  },
+  "sending": {
+    "message": "Enviando..."
+  },
+  "suggestionSuccess": {
+    "message": "¡Gracias! Recibí tu sugerencia."
+  },
+  "suggestionError": {
+    "message": "No pudimos enviar la sugerencia. Probá de nuevo."
+  },
+  "copyError": {
+    "message": "No se pudo copiar"
+  },
+  "languageSelectorAria": {
+    "message": "Cambiar idioma"
+  }
+}

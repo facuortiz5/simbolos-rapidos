@@ -1,0 +1,65 @@
+{
+  "extensionName": {
+    "message": "Quick Symbols: search and copy characters"
+  },
+  "extensionDescription": {
+    "message": "Quickly search and copy symbols, special characters, accented letters, Greek letters, and mathematical symbols."
+  },
+  "actionTitle": {
+    "message": "Search symbols"
+  },
+  "documentTitle": {
+    "message": "Quick Symbols"
+  },
+  "eyebrow": {
+    "message": "QUICK SYMBOLS"
+  },
+  "heading": {
+    "message": "Find the character you need"
+  },
+  "searchPlaceholder": {
+    "message": "Try ‘omega’, ‘copyright’ or ‘euro’"
+  },
+  "searchAria": {
+    "message": "Search for a symbol"
+  },
+  "hint": {
+    "message": "Click to copy | Enter copies the first result"
+  },
+  "resultsAria": {
+    "message": "Results"
+  },
+  "copy": {
+    "message": "Copy"
+  },
+  "copied": {
+    "message": "Copied"
+  },
+  "suggestionTitle": {
+    "message": "Can’t find the symbol you need?"
+  },
+  "suggestionPlaceholder": {
+    "message": "Describe the letter or symbol and I’ll add it in a future update."
+  },
+  "suggestionAria": {
+    "message": "Describe the missing letter or symbol"
+  },
+  "sendSuggestion": {
+    "message": "Send suggestion"
+  },
+  "sending": {
+    "message": "Sending..."
+  },
+  "suggestionSuccess": {
+    "message": "Thanks! Your suggestion was received."
+  },
+  "suggestionError": {
+    "message": "We couldn’t send your suggestion. Try again."
+  },
+  "copyError": {
+    "message": "Couldn’t copy"
+  },
+  "languageSelectorAria": {
+    "message": "Change language"
+  }
+}
