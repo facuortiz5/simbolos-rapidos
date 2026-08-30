@@ -1,15 +1,16 @@
 {
   "manifest_version": 3,
-  "name": "Símbolos rápidos: buscar y copiar caracteres",
-  "version": "1.0.5",
-  "description": "Buscá y copiá símbolos, caracteres especiales, letras con acentos, ñ, letras griegas y símbolos matemáticos rápidamente.",
+  "name": "__MSG_extensionName__",
+  "version": "1.1.0",
+  "description": "__MSG_extensionDescription__",
+  "default_locale": "en",
   "permissions": ["clipboardWrite", "storage"],
   "host_permissions": [
     "https://script.google.com/*",
     "https://script.googleusercontent.com/*"
   ],
   "action": {
-    "default_title": "Buscar símbolos",
+    "default_title": "__MSG_actionTitle__",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon-16.png",

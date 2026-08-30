@@ -1,16 +1,37 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" class="i18n-loading">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Símbolos rápidos</title>
+    <title data-i18n="documentTitle">Símbolos rápidos</title>
     <link rel="stylesheet" href="popup.css">
   </head>
   <body>
     <main class="popup">
       <header class="header">
-        <p class="eyebrow">SÍMBOLOS RÁPIDOS</p>
-        <h1>Encontrá el carácter que buscás</h1>
+        <p class="eyebrow" data-i18n="eyebrow">SÍMBOLOS RÁPIDOS</p>
+        <h1 data-i18n="heading">Encontrá el carácter que buscás</h1>
+        <div id="language-picker" class="language-picker">
+          <button
+            id="language-toggle"
+            class="language-picker__toggle"
+            type="button"
+            aria-label="Cambiar idioma"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="language-menu"
+            data-i18n-aria-label="languageSelectorAria"
+          >
+            <span id="active-language">ES</span>
+            <svg class="language-picker__chevron" viewBox="0 0 10 6" aria-hidden="true">
+              <path d="m1 1 4 4 4-4"></path>
+            </svg>
+          </button>
+          <div id="language-menu" class="language-picker__menu" role="menu" hidden>
+            <button type="button" role="menuitem" data-language="es">ES</button>
+            <button type="button" role="menuitem" data-language="en">EN</button>
+          </div>
+        </div>
       </header>
 
       <form id="search-form" class="search" role="search">
@@ -22,31 +43,35 @@
           type="search"
           placeholder="Probá “enie”, “slash” o “euro”"
           aria-label="Buscar un símbolo"
+          data-i18n-placeholder="searchPlaceholder"
+          data-i18n-aria-label="searchAria"
           autocomplete="off"
           autofocus
         >
       </form>
 
-      <p class="hint">Hacé clic para copiar | Enter copia el primero</p>
-      <section id="results" class="results" aria-label="Resultados"></section>
+      <p class="hint" data-i18n="hint">Hacé clic para copiar | Enter copia el primero</p>
+      <section id="results" class="results" aria-label="Resultados" data-i18n-aria-label="resultsAria"></section>
       <section id="suggestion-state" class="suggestion" hidden>
-        <h2 class="suggestion__title">¿No encontrás el símbolo que buscás?</h2>
+        <h2 class="suggestion__title" data-i18n="suggestionTitle">¿No encontrás el símbolo que buscás?</h2>
         <form id="suggestion-form" class="suggestion__form">
           <textarea
             id="suggestion-input"
             rows="2"
             placeholder="Describí la letra o símbolo y lo agrego en una próxima actualización."
             aria-label="Describir la letra o símbolo faltante"
+            data-i18n-placeholder="suggestionPlaceholder"
+            data-i18n-aria-label="suggestionAria"
             required
           ></textarea>
-          <button id="suggestion-submit" class="suggestion__submit" type="submit">
+          <button id="suggestion-submit" class="suggestion__submit" type="submit" data-i18n="sendSuggestion">
             Enviar sugerencia
           </button>
         </form>
-        <p id="suggestion-success" class="suggestion__message suggestion__message--success" role="status" hidden>
+        <p id="suggestion-success" class="suggestion__message suggestion__message--success" role="status" data-i18n="suggestionSuccess" hidden>
           ¡Gracias! Recibí tu sugerencia.
         </p>
-        <p id="suggestion-error" class="suggestion__message suggestion__message--error" role="alert" hidden>
+        <p id="suggestion-error" class="suggestion__message suggestion__message--error" role="alert" data-i18n="suggestionError" hidden>
           No pudimos enviar la sugerencia. Probá de nuevo.
         </p>
       </section>
