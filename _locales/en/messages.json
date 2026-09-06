@@ -61,5 +61,59 @@
   },
   "languageSelectorAria": {
     "message": "Change language"
+  },
+  "openFavorites": {
+    "message": "Open favorites"
+  },
+  "favorites": {
+    "message": "Favorites"
+  },
+  "favoritesEmpty": {
+    "message": "You haven’t added any favorites yet."
+  },
+  "addFavorite": {
+    "message": "Add to favorites"
+  },
+  "removeFavorite": {
+    "message": "Remove from favorites"
+  },
+  "favoritesSaveError": {
+    "message": "Couldn’t save favorites"
+  },
+  "backHome": {
+    "message": "Back to home"
+  },
+  "categoryAll": {
+    "message": "All"
+  },
+  "recentLabel": {
+    "message": "Last used"
+  },
+  "categoryGreek": {
+    "message": "Greek"
+  },
+  "categoryMath": {
+    "message": "Math"
+  },
+  "categoryArrows": {
+    "message": "Arrows"
+  },
+  "categoryCurrencies": {
+    "message": "Currencies"
+  },
+  "categoryLetters": {
+    "message": "Letters & accents"
+  },
+  "categoryPunctuation": {
+    "message": "Punctuation"
+  },
+  "categoryShapes": {
+    "message": "Shapes"
+  },
+  "categoryMusic": {
+    "message": "Music"
+  },
+  "categoryZodiac": {
+    "message": "Zodiac"
   }
 }

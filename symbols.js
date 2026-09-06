@@ -300,4 +300,50 @@ const SYMBOLS = [
   { symbol: "ω", name: "Omega", nameEn: "Lowercase omega", keywords: ["omega", "omega minuscula", "omega minúscula", "omega lowercase", "greek omega", "letra griega omega", "greek letter omega", "alfabeto griego", "greek alphabet"] },
   { symbol: "Ω", name: "Omega mayúscula", nameEn: "Capital omega", keywords: ["omega mayuscula", "omega mayúscula", "omega uppercase", "capital omega", "greek omega uppercase", "ohm", "ohmios", "letra griega omega mayuscula", "alfabeto griego", "greek alphabet"] },
 
+  // =========================
+  // MÚSICA
+  // =========================
+
+  { symbol: "♪", name: "Corchea", nameEn: "Eighth note", keywords: ["musica", "música", "nota", "nota musical", "corchea", "music", "musical note", "eighth note", "quaver"] },
+  { symbol: "♫", name: "Corcheas unidas", nameEn: "Beamed eighth notes", keywords: ["musica", "música", "nota", "notas musicales", "corcheas", "music", "musical notes", "beamed eighth notes", "quavers"] },
+  { symbol: "♬", name: "Semicorcheas unidas", nameEn: "Beamed sixteenth notes", keywords: ["musica", "música", "nota", "notas musicales", "semicorcheas", "music", "musical notes", "beamed sixteenth notes", "semiquavers"] },
+  { symbol: "♩", name: "Negra musical", nameEn: "Quarter note", keywords: ["musica", "música", "nota", "nota musical", "negra", "music", "musical note", "quarter note", "crotchet"] },
+
+  // =========================
+  // ZODÍACO
+  // =========================
+
+  { symbol: "♈", name: "Aries", nameEn: "Aries", keywords: ["aries", "zodiaco", "zodíaco", "horoscopo", "horóscopo", "signo zodiacal", "zodiac", "horoscope", "astrology", "ram"] },
+  { symbol: "♉", name: "Tauro", nameEn: "Taurus", keywords: ["tauro", "taurus", "zodiaco", "zodíaco", "horoscopo", "horóscopo", "signo zodiacal", "zodiac", "horoscope", "astrology", "bull"] },
+  { symbol: "♊", name: "Géminis", nameEn: "Gemini", keywords: ["geminis", "géminis", "gemini", "zodiaco", "zodíaco", "horoscopo", "horóscopo", "signo zodiacal", "zodiac", "horoscope", "astrology", "twins"] },
+  { symbol: "♋", name: "Cáncer", nameEn: "Cancer", keywords: ["cancer", "cáncer", "zodiaco", "zodíaco", "horoscopo", "horóscopo", "signo zodiacal", "zodiac", "horoscope", "astrology", "crab"] },
+  { symbol: "♌", name: "Leo", nameEn: "Leo", keywords: ["leo", "zodiaco", "zodíaco", "horoscopo", "horóscopo", "signo zodiacal", "zodiac", "horoscope", "astrology", "lion"] },
+  { symbol: "♍", name: "Virgo", nameEn: "Virgo", keywords: ["virgo", "zodiaco", "zodíaco", "horoscopo", "horóscopo", "signo zodiacal", "zodiac", "horoscope", "astrology", "maiden"] },
+  { symbol: "♎", name: "Libra", nameEn: "Libra", keywords: ["libra", "zodiaco", "zodíaco", "horoscopo", "horóscopo", "signo zodiacal", "zodiac", "horoscope", "astrology", "scales"] },
+  { symbol: "♏", name: "Escorpio", nameEn: "Scorpio", keywords: ["escorpio", "scorpio", "zodiaco", "zodíaco", "horoscopo", "horóscopo", "signo zodiacal", "zodiac", "horoscope", "astrology", "scorpion"] },
+  { symbol: "♐", name: "Sagitario", nameEn: "Sagittarius", keywords: ["sagitario", "sagittarius", "zodiaco", "zodíaco", "horoscopo", "horóscopo", "signo zodiacal", "zodiac", "horoscope", "astrology", "archer"] },
+  { symbol: "♑", name: "Capricornio", nameEn: "Capricorn", keywords: ["capricornio", "capricorn", "zodiaco", "zodíaco", "horoscopo", "horóscopo", "signo zodiacal", "zodiac", "horoscope", "astrology", "goat"] },
+  { symbol: "♒", name: "Acuario", nameEn: "Aquarius", keywords: ["acuario", "aquarius", "zodiaco", "zodíaco", "horoscopo", "horóscopo", "signo zodiacal", "zodiac", "horoscope", "astrology", "water bearer"] },
+  { symbol: "♓", name: "Piscis", nameEn: "Pisces", keywords: ["piscis", "pisces", "zodiaco", "zodíaco", "horoscopo", "horóscopo", "signo zodiacal", "zodiac", "horoscope", "astrology", "fish"] },
+
+  // =========================
+  // FORMAS
+  // =========================
+
+  { symbol: "★", name: "Estrella rellena", nameEn: "Filled star", keywords: ["formas", "estrella", "estrella negra", "estrella cinco puntas", "shapes", "star", "filled star", "black star", "five pointed star"] },
+  { symbol: "☆", name: "Estrella de contorno", nameEn: "Outline star", keywords: ["formas", "estrella", "estrella vacia", "estrella vacía", "estrella blanca", "shapes", "star", "outline star", "empty star", "white star"] },
+  { symbol: "✦", name: "Estrella de cuatro puntas rellena", nameEn: "Filled four-pointed star", keywords: ["formas", "estrella", "estrella cuatro puntas", "destello", "shapes", "star", "four pointed star", "sparkle"] },
+  { symbol: "✧", name: "Estrella de cuatro puntas de contorno", nameEn: "Outline four-pointed star", keywords: ["formas", "estrella", "estrella cuatro puntas", "destello", "shapes", "star", "four pointed star", "outline sparkle"] },
+  { symbol: "♡", name: "Corazón de contorno", nameEn: "Outline heart", keywords: ["formas", "corazon", "corazón", "corazon vacio", "corazón vacío", "shapes", "heart", "outline heart", "empty heart"] },
+  { symbol: "♥", name: "Corazón relleno", nameEn: "Filled heart", keywords: ["formas", "corazon", "corazón", "corazon negro", "corazón negro", "shapes", "heart", "filled heart", "black heart"] },
+  { symbol: "●", name: "Círculo relleno", nameEn: "Filled circle", keywords: ["formas", "circulo", "círculo", "circulo negro", "punto", "shapes", "circle", "filled circle", "black circle", "dot"] },
+  { symbol: "○", name: "Círculo de contorno", nameEn: "Outline circle", keywords: ["formas", "circulo", "círculo", "circulo vacio", "círculo vacío", "shapes", "circle", "outline circle", "empty circle"] },
+  { symbol: "■", name: "Cuadrado relleno", nameEn: "Filled square", keywords: ["formas", "cuadrado", "cuadrado negro", "shapes", "square", "filled square", "black square"] },
+  { symbol: "□", name: "Cuadrado de contorno", nameEn: "Outline square", keywords: ["formas", "cuadrado", "cuadrado vacio", "cuadrado vacío", "shapes", "square", "outline square", "empty square"] },
+  { symbol: "▲", name: "Triángulo hacia arriba relleno", nameEn: "Filled upward triangle", keywords: ["formas", "triangulo", "triángulo", "triangulo arriba", "shapes", "triangle", "filled triangle", "upward triangle"] },
+  { symbol: "△", name: "Triángulo hacia arriba de contorno", nameEn: "Outline upward triangle", keywords: ["formas", "triangulo", "triángulo", "triangulo arriba", "triangulo vacio", "shapes", "triangle", "outline triangle", "upward triangle"] },
+  { symbol: "▼", name: "Triángulo hacia abajo relleno", nameEn: "Filled downward triangle", keywords: ["formas", "triangulo", "triángulo", "triangulo abajo", "shapes", "triangle", "filled triangle", "downward triangle"] },
+  { symbol: "▽", name: "Triángulo hacia abajo de contorno", nameEn: "Outline downward triangle", keywords: ["formas", "triangulo", "triángulo", "triangulo abajo", "triangulo vacio", "shapes", "triangle", "outline triangle", "downward triangle"] },
+  { symbol: "◆", name: "Rombo relleno", nameEn: "Filled diamond", keywords: ["formas", "rombo", "diamante", "rombo negro", "shapes", "diamond", "filled diamond", "black diamond"] },
+  { symbol: "◇", name: "Rombo de contorno", nameEn: "Outline diamond", keywords: ["formas", "rombo", "diamante", "rombo vacio", "rombo vacío", "shapes", "diamond", "outline diamond", "empty diamond"] },
 ];

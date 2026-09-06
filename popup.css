@@ -181,15 +181,21 @@ h1 {
 
 .results {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 7px;
+  width: calc(100% + 4px);
   max-height: 308px;
+  margin-right: -4px;
+  padding-right: 4px;
   overflow-y: auto;
   scrollbar-width: thin;
 }
 
 .result {
+  position: relative;
   display: grid;
-  grid-template-columns: 42px 1fr auto;
+  grid-column: 1 / -1;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
   gap: 11px;
   align-items: center;
   width: 100%;
@@ -205,7 +211,8 @@ h1 {
 }
 
 .result:hover,
-.result:focus-visible {
+.result:focus-visible,
+.result:has(.result__copy-target:focus-visible) {
   background: #ffffff;
   border-color: #dfe2ea;
   outline: none;
@@ -240,6 +247,168 @@ h1 {
 .result__copy {
   color: #9aa1b2;
   font-size: 11px;
+}
+
+/* La acción de copiar cubre la fila; la estrella es un botón hermano. */
+.result__copy-target {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: inherit;
+  cursor: pointer;
+}
+
+.result__copy-target:focus-visible {
+  outline: 1px solid #818cf8;
+  outline-offset: -1px;
+}
+
+.result__copy-target ~ span {
+  position: relative;
+  pointer-events: none;
+}
+
+.result__details {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 6px;
+}
+
+.result__details .result__name {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.result__recent {
+  position: absolute;
+  top: -8px;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  color: #6366f1;
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.star-button {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  color: #9299aa;
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.star-icon {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linejoin: miter;
+}
+
+.star-button[aria-pressed="true"] {
+  color: #4f46e5;
+}
+
+.star-button[aria-pressed="true"] .star-icon {
+  fill: currentColor;
+}
+
+.star-button:hover {
+  color: #4f46e5;
+  background: #eef0ff;
+}
+
+.star-button:focus-visible,
+.view-back:focus-visible {
+  outline: 1px solid #818cf8;
+  outline-offset: 1px;
+}
+
+.category {
+  grid-column: auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: 40px auto;
+  align-content: center;
+  justify-items: center;
+  min-height: 104px;
+  padding: 10px;
+  gap: 8px;
+  text-align: center;
+}
+
+.category__name {
+  min-width: 0;
+  width: 100%;
+  display: -webkit-box;
+  overflow: hidden;
+  line-height: 1.2;
+  text-align: center;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.category__chevron {
+  display: none;
+}
+
+.category__clock {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+}
+
+.symbol--text {
+  font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", "DejaVu Sans", sans-serif;
+  font-variant-emoji: text;
+}
+
+.view-back {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 28px;
+  padding: 4px 2px;
+  color: #172033;
+  font-size: 13px;
+  font-weight: 650;
+  text-align: left;
+  background: #f7f8fc;
+  border: 0;
+  cursor: pointer;
+}
+
+.view-empty {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 16px 2px;
+  color: #7d8598;
+  font-size: 13px;
 }
 
 .suggestion {
