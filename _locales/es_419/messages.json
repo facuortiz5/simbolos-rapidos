@@ -36,7 +36,7 @@
     "message": "Copiado"
   },
   "suggestionTitle": {
-    "message": "¿No encontrás el símbolo que buscás?"
+    "message": "¿No encontrás el símbolo?"
   },
   "suggestionPlaceholder": {
     "message": "Describí la letra o símbolo y lo agrego en una próxima actualización."
@@ -61,6 +61,12 @@
   },
   "languageSelectorAria": {
     "message": "Cambiar idioma"
+  },
+  "switchToNight": {
+    "message": "Cambiar a modo oscuro"
+  },
+  "switchToDay": {
+    "message": "Cambiar a modo claro"
   },
   "openFavorites": {
     "message": "Abrir favoritos"

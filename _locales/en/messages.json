@@ -36,7 +36,7 @@
     "message": "Copied"
   },
   "suggestionTitle": {
-    "message": "Can’t find the symbol you need?"
+    "message": "Can’t find the symbol?"
   },
   "suggestionPlaceholder": {
     "message": "Describe the letter or symbol and I’ll add it in a future update."
@@ -61,6 +61,12 @@
   },
   "languageSelectorAria": {
     "message": "Change language"
+  },
+  "switchToNight": {
+    "message": "Switch to night mode"
+  },
+  "switchToDay": {
+    "message": "Switch to day mode"
   },
   "openFavorites": {
     "message": "Open favorites"

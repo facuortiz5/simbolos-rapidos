@@ -14,10 +14,12 @@ const languageToggle = document.querySelector("#language-toggle");
 const languageMenu = document.querySelector("#language-menu");
 const activeLanguageElement = document.querySelector("#active-language");
 const languageOptions = [...document.querySelectorAll("[data-language]")];
+const themeToggle = document.querySelector("#theme-toggle");
 const SUGGESTION_ENDPOINT = "https://script.google.com/macros/s/AKfycbyqfOAccdiCQw0m8Ng3HmXH7akVKTCFPhe-iaUfH4zQwc2Phw5cc-mmWYjsy8xEr0iyDg/exec";
 const RECENT_STORAGE_KEY = "recentSymbols";
 const LEGACY_USAGE_STORAGE_KEY = "symbolUsageStats";
 const UI_LANGUAGE_STORAGE_KEY = "uiLanguage";
+const UI_THEME_STORAGE_KEY = "uiTheme";
 const FAVORITES_STORAGE_KEY = "favoriteSymbols";
 const DEFAULT_RECENT_SYMBOLS = ["ñ", "@", "á", "é", "ó"];
 const LOCALE_DIRECTORIES = { es: "es_419", en: "en" };
@@ -34,6 +36,8 @@ let currentStatus = null;
 let activeView = "home";
 let favoriteSymbols = [];
 let favoriteSaveQueue = Promise.resolve();
+let activeTheme = "day";
+let themeSaveQueue = Promise.resolve();
 
 function normalizeText(text) {
   return text
@@ -93,6 +97,7 @@ function buildRecentSymbols(symbols) {
 }
 
 function searchSymbols(rawQuery) {
+  const literalQuery = rawQuery.trim().normalize("NFC");
   const query = normalizeText(rawQuery);
 
   if (!query) return [];
@@ -110,7 +115,11 @@ function searchSymbols(rawQuery) {
   }
 
   return SYMBOLS
-    .map((item, index) => ({ item, index, score: scoreSymbol(item, query) }))
+    .map((item, index) => ({
+      item,
+      index,
+      score: item.symbol.normalize("NFC") === literalQuery ? 110 : scoreSymbol(item, query)
+    }))
     .filter((result) => result.score > 0)
     .sort((a, b) => b.score - a.score || a.index - b.index)
     .map((result) => result.item);
@@ -400,6 +409,7 @@ function applyTranslations() {
   });
 
   setSuggestionSending(isSendingSuggestion);
+  applyUiTheme();
 
   if (currentStatus) {
     statusElement.textContent = getStatusText();
@@ -409,6 +419,23 @@ function applyTranslations() {
 function closeLanguageMenu() {
   languageMenu.hidden = true;
   languageToggle.setAttribute("aria-expanded", "false");
+}
+
+function applyUiTheme() {
+  document.documentElement.dataset.theme = activeTheme;
+  const label = t(activeTheme === "day" ? "switchToNight" : "switchToDay");
+  themeToggle.setAttribute("aria-label", label);
+  themeToggle.title = label;
+}
+
+async function initializeUiTheme() {
+  try {
+    const storedData = await chrome.storage.local.get(UI_THEME_STORAGE_KEY);
+    activeTheme = storedData[UI_THEME_STORAGE_KEY] === "night" ? "night" : "day";
+  } catch (error) {
+    console.error("No se pudo cargar la preferencia de tema:", error);
+  }
+  applyUiTheme();
 }
 
 async function setUiLanguage(language, { persist = false, render = true } = {}) {
@@ -595,6 +622,16 @@ suggestionInput.addEventListener("input", () => {
 
 suggestionForm.addEventListener("submit", submitSuggestion);
 
+themeToggle.addEventListener("click", (event) => {
+  activeTheme = activeTheme === "day" ? "night" : "day";
+  applyUiTheme();
+  const savedTheme = activeTheme;
+  themeSaveQueue = themeSaveQueue
+    .then(() => chrome.storage.local.set({ [UI_THEME_STORAGE_KEY]: savedTheme }))
+    .catch((error) => console.error("No se pudo guardar la preferencia de tema:", error));
+  if (event.detail > 0) queueMicrotask(() => themeToggle.blur());
+});
+
 languageToggle.addEventListener("click", (event) => {
   event.stopPropagation();
   languageMenu.hidden = !languageMenu.hidden;
@@ -646,7 +683,7 @@ searchForm.addEventListener("submit", (event) => {
 
 async function initialize() {
   try {
-    await Promise.all([loadRecentSymbols(), loadFavoriteSymbols(), initializeUiLanguage()]);
+    await Promise.all([loadRecentSymbols(), loadFavoriteSymbols(), initializeUiLanguage(), initializeUiTheme()]);
     renderResults();
   } finally {
     document.documentElement.classList.remove("i18n-loading");

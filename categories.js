@@ -9,7 +9,7 @@ const SYMBOL_CATEGORIES = [
   },
   {
     id: "math", labelKey: "categoryMath", icon: "Σ",
-    symbols: [..."°<>≤≥≠≡∞≈±÷√⁰¹²³⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉"]
+    symbols: [..."°<>≤≥≠≡∞≈±÷√⁰¹²³⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉", "⁻¹", "⁻²", "⁻³", "⁻⁴", "⁻⁵", "⁻⁶", "⁻⁷", "⁻⁸", "⁻⁹", "₋₁", "₋₂", "₋₃", "₋₄", "₋₅", "₋₆", "₋₇", "₋₈", "₋₉"]
   },
   { id: "arrows", labelKey: "categoryArrows", icon: "→", symbols: [..."→←↑↓‹›"] },
   { id: "currencies", labelKey: "categoryCurrencies", icon: "$", symbols: [..."€$£¥¢"] },

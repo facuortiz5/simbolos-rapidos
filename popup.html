@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" class="i18n-loading">
+<html lang="es" class="i18n-loading" data-theme="day">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,26 +11,37 @@
       <header class="header">
         <p class="eyebrow" data-i18n="eyebrow">SÍMBOLOS RÁPIDOS</p>
         <h1 data-i18n="heading">Encontrá el carácter que buscás</h1>
-        <div id="language-picker" class="language-picker">
-          <button
-            id="language-toggle"
-            class="language-picker__toggle"
-            type="button"
-            aria-label="Cambiar idioma"
-            aria-haspopup="menu"
-            aria-expanded="false"
-            aria-controls="language-menu"
-            data-i18n-aria-label="languageSelectorAria"
-          >
-            <span id="active-language">ES</span>
-            <svg class="language-picker__chevron" viewBox="0 0 10 6" aria-hidden="true">
-              <path d="m1 1 4 4 4-4"></path>
+        <div class="header-controls">
+          <div id="language-picker" class="language-picker">
+            <button
+              id="language-toggle"
+              class="language-picker__toggle"
+              type="button"
+              aria-label="Cambiar idioma"
+              aria-haspopup="menu"
+              aria-expanded="false"
+              aria-controls="language-menu"
+              data-i18n-aria-label="languageSelectorAria"
+            >
+              <span id="active-language">ES</span>
+              <svg class="language-picker__chevron" viewBox="0 0 10 6" aria-hidden="true">
+                <path d="m1 1 4 4 4-4"></path>
+              </svg>
+            </button>
+            <div id="language-menu" class="language-picker__menu" role="menu" hidden>
+              <button type="button" role="menuitem" data-language="es">ES</button>
+              <button type="button" role="menuitem" data-language="en">EN</button>
+            </div>
+          </div>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Cambiar a modo oscuro">
+            <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M20 15.1A8.4 8.4 0 0 1 8.9 4a8.5 8.5 0 1 0 11.1 11.1Z"></path>
+            </svg>
+            <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3.5"></circle>
+              <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
             </svg>
           </button>
-          <div id="language-menu" class="language-picker__menu" role="menu" hidden>
-            <button type="button" role="menuitem" data-language="es">ES</button>
-            <button type="button" role="menuitem" data-language="en">EN</button>
-          </div>
         </div>
       </header>
 
@@ -53,7 +64,7 @@
       <p class="hint" data-i18n="hint">Hacé clic para copiar | Enter copia el primero</p>
       <section id="results" class="results" aria-label="Resultados" data-i18n-aria-label="resultsAria"></section>
       <section id="suggestion-state" class="suggestion" hidden>
-        <h2 class="suggestion__title" data-i18n="suggestionTitle">¿No encontrás el símbolo que buscás?</h2>
+        <h2 class="suggestion__title" data-i18n="suggestionTitle">¿No encontrás el símbolo?</h2>
         <form id="suggestion-form" class="suggestion__form">
           <textarea
             id="suggestion-input"
